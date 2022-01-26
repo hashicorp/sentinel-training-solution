@@ -1,0 +1,116 @@
+_root = {
+	"data": {},
+	"modules": {
+		"Carol": {
+			"config": {
+				"name": "Carol",
+			},
+			"source":  "github.com/rberlind/terraform-local-fake",
+			"version": "1.0.1",
+		},
+		"Roger": {
+			"config": {
+				"name": "Roger",
+			},
+			"source":  "github.com/rberlind/terraform-local-fake",
+			"version": "1.0.1",
+		},
+	},
+	"outputs":   {},
+	"providers": {},
+	"resources": {},
+	"variables": {},
+}
+
+module_Carol = {
+	"data":    {},
+	"modules": {},
+	"outputs": {
+		"filename": {
+			"depends_on":  [],
+			"description": "name of file",
+			"sensitive":   false,
+			"value":       "${local_file.name.filename}",
+		},
+	},
+	"providers": {},
+	"resources": {
+		"local_file": {
+			"name": {
+				"config": {
+					"content":  "${var.name}",
+					"filename": "${path.module}/name.txt",
+				},
+				"provisioners": null,
+			},
+		},
+	},
+	"variables": {
+		"name": {
+			"default":     "Roger",
+			"description": "name",
+		},
+	},
+}
+
+module_Roger = {
+	"data":    {},
+	"modules": {},
+	"outputs": {
+		"filename": {
+			"depends_on":  [],
+			"description": "name of file",
+			"sensitive":   false,
+			"value":       "${local_file.name.filename}",
+		},
+	},
+	"providers": {},
+	"resources": {
+		"local_file": {
+			"name": {
+				"config": {
+					"content":  "${var.name}",
+					"filename": "${path.module}/name.txt",
+				},
+				"provisioners": null,
+			},
+		},
+	},
+	"variables": {
+		"name": {
+			"default":     "Roger",
+			"description": "name",
+		},
+	},
+}
+
+module_paths = [
+	[],
+	[
+		"Carol",
+	],
+	[
+		"Roger",
+	],
+]
+
+module = func(path) {
+	if length(path) == 0 {
+		return _root
+	}
+	if length(path) == 1 and path[0] is "Carol" {
+		return module_Carol
+	}
+	if length(path) == 1 and path[0] is "Roger" {
+		return module_Roger
+	}
+
+	return undefined
+}
+
+data = _root.data
+modules = _root.modules
+providers = _root.providers
+resources = _root.resources
+variables = _root.variables
+outputs = _root.outputs

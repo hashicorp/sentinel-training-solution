@@ -1,0 +1,21 @@
+import "tfconfig"
+import "strings"
+
+# Require all modules directly under root module
+# to come from PMR
+validate_modules_from_pmr  = func() {
+  validated = true
+  for tfconfig.modules as _, m {
+    if not strings.has_prefix(m.source, "app.terraform.io/RSBST") {
+      print("Module with source", m.source, "is not in the PMR" )
+      validated = false
+    }
+  }
+  return validated
+}
+
+# Main rule that requires other rules to be true
+modules_in_pmr = validate_modules_from_pmr()
+main = rule {
+  modules_in_pmr
+}

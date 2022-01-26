@@ -1,0 +1,49 @@
+# This policy restricts the public images that GCP compute instances use
+
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
+import "tfplan-functions" as plan
+
+# Standard types import
+import "types"
+
+# Get all GCP compute instances
+allGCPComputeInstances = plan.find_resources("google_compute_instance")
+
+# Function to restrict images used by GCP compute instances
+filter_images = func(instances, image) {
+
+  # Create empty list of violators
+  violators = {}
+
+  # Iterate over instances to check their images
+  for instances as address, instance {
+    # Set boot_disk variable
+    boot_disk = instance.change.after.boot_disk
+    # Validate that the initialize_params block is present and a list
+    # and that the image under it is allowed
+    # Add violators to the violators list and print warnings
+    if types.type_of(boot_disk[0].initialize_params) is not "list" {
+      violators[address] = instance
+      print(address, "does not have image defined: it should be", image)
+    } else if boot_disk[0].initialize_params[0].image is not image {
+      violators[address] = instance
+      print(address, "has image", boot_disk[0].initialize_params[0].image,
+            "but is supposed to use", image)
+    } // end if
+  } // end for
+
+  return violators
+
+}
+
+# Filter to violating GCP instances
+violatingGCPComputeInstances = filter_images(allGCPComputeInstances, "debian-cloud/debian-9")
+
+# Count violations
+violations = length(violatingGCPComputeInstances)
+
+# Main rule
+main = rule {
+  violations is 0
+}

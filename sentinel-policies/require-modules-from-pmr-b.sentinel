@@ -1,0 +1,22 @@
+# This policy validates that all modules loaded directly by the
+# root module are in the Private Module Registry (PMR) of a TFC
+# organization.
+
+# Import common-functions/module-functions/module-functions.sentinel
+# as "modules"
+import "module-functions" as modules
+
+##### Parameters #####
+# The address of the TFC or TFE server
+param address default "app.terraform.io"
+
+# The organization on the TFC or TFE server
+param organization
+
+# Call the validation function
+modules_from_pmr = modules.require_modules_from_pmr(address, organization)
+
+# Main rule
+main = rule {
+  modules_from_pmr
+}

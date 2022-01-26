@@ -1,0 +1,6 @@
+{
+  "mock": {
+    "tfconfig": "mocks/mock-tfconfig-fake-modules.sentinel"
+  }
+}
+

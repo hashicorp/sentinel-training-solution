@@ -1,0 +1,37 @@
+# This policy uses the Sentinel tfrun import to prevent the use of auto-apply
+# in workspaces with names matching "^prod-(.*)" or "(.*)-prod$"
+
+##### Imports #####
+
+import "tfrun"
+import "strings"
+
+##### Functions #####
+
+# Validate that auto-apply not set for production workspaces
+validate_auto_apply = func() {
+
+  validated = true
+
+  if tfrun.workspace.name matches "^prod-(.*)" or
+     tfrun.workspace.name matches "(.*)-prod$" {
+  # if strings.has_prefix(tfrun.workspace.name, "prod-") or
+  #   strings.has_suffix(tfrun.workspace.name, "-prod") {
+    if tfrun.workspace.auto_apply is true {
+      print("The workspace", tfrun.workspace.name, "has auto_apply set to true")
+      validated = false
+    }
+  }
+
+  return validated
+}
+
+##### Rules #####
+
+# Call the validation function
+auto_apply_validated = validate_auto_apply()
+
+# Main rule
+main = rule {
+  auto_apply_validated
+}
