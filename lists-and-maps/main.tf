@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 # This is used to illustrate referencing lists and maps in Sentinel
 
 # ttl variable
