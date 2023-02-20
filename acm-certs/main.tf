@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 variable "domain_1" {
   description = "domain of first Amazon Certificate Manager certificate"
 }
