@@ -1,6 +1,9 @@
 # This policy uses the tfstate import to restrict ACM certificates
 # to have domains that are sub-domains of hashidemos.io
 
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 # Import common-functions/tfstate-functions/tfstate-functions.sentinel
 # with alias "state"
 import "tfstate-functions" as state
