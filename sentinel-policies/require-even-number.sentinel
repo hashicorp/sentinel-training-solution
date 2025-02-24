@@ -1,5 +1,8 @@
 # A policy that requires an integer to be even
 
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 # A parameter that must be set to an integer.
 param the_number default 1
 

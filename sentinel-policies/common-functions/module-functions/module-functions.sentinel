@@ -1,5 +1,8 @@
 # Functions that use the tfconfig import to restrict modules
 
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 ##### Imports #####
 import "tfconfig/v2" as tfconfig
 import "strings"

@@ -1,6 +1,9 @@
 # This policy uses the Sentinel tfrun import to prevent the use of auto-apply
 # in workspaces with names matching "^prod-(.*)" or "(.*)-prod$"
 
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 ##### Imports #####
 
 import "tfrun"

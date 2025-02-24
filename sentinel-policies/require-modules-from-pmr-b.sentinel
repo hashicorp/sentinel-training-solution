@@ -2,6 +2,9 @@
 # root module are in the Private Module Registry (PMR) of a TFC
 # organization.
 
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 # Import common-functions/module-functions/module-functions.sentinel
 # as "modules"
 import "module-functions" as modules
