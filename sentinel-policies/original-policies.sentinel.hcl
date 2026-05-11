@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2022, 2026
+
 ## Exercise 1
 
 # restrict-vault-auth-methods.sentinel

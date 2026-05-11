@@ -2,6 +2,8 @@
 # root module are in the Private Module Registry (PMR) of a TFC
 # organization.
 
+# Copyright IBM Corp. 2022, 2026
+
 # Import the v2 tfplan import, but use the alias "tfplan"
 import "tfconfig/v2" as tfconfig
 
