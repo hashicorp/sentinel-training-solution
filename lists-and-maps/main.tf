@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2022, 2026
+
 # This is used to illustrate referencing lists and maps in Sentinel
 
 # ttl variable

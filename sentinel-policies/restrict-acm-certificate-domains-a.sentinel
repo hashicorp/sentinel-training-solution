@@ -1,6 +1,8 @@
 # This policy uses the tfstate import to restrict ACM certificates
 # to have domains that are sub-domains of hashidemos.io
 
+# Copyright IBM Corp. 2022, 2026
+
 # Import common-functions/tfstate-functions/tfstate-functions.sentinel
 # with alias "state"
 import "tfstate-functions" as state

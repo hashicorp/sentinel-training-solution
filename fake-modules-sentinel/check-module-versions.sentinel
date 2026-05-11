@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2022, 2026
+
 import "tfconfig"
 
 # Require all modules directly under root module

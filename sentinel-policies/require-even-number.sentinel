@@ -1,5 +1,7 @@
 # A policy that requires an integer to be even
 
+# Copyright IBM Corp. 2022, 2026
+
 # A parameter that must be set to an integer.
 param the_number default 1
 

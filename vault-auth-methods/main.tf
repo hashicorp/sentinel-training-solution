@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2022, 2026
+
 variable "types" {
   description = "types of Vault auth methods"
   type = "list"

@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2022, 2026
+
 variable "domain_1" {
   description = "domain of first Amazon Certificate Manager certificate"
 }

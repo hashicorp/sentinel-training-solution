@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2022, 2026
+
 variable "gcp_project" {
   description = "GCP project name"
 }
